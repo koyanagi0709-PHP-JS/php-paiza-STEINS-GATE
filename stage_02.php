@@ -12,22 +12,18 @@
 list($n,$k) = explode(' ',trim(fgets(STDIN)));
 // echo $n,$k;
 $members = array(); #各キャラクターの経験値を格納する配列
-$totalVal = 0;
+$totalVal = 0; # 必要経験値合計
 $count = 0; #必要戦闘回数
 
 /* 処理 */
 $k = doubleval($k);
 
 for($i=0;$i<$n;$i++) {
-    array_unshift($members,doubleval(trim(fgets(STDIN))));
+    array_push($members,doubleval(trim(fgets(STDIN))));
 }
 $totalVal = array_sum($members);
 // echo $totalVal;
 
-
-do {
-    $totalVal -= $k;
-    $count++;
-}while($totalVal>0);
+$count = ceil(($totalVal / $k));
 
 echo $count;
